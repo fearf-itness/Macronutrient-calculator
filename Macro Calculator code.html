@@ -1,0 +1,319 @@
+``html
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Personal Information Section -->
+        <div class="space-y-5">
+            <h2 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                YOUR STATS
+            </h2>
+            
+            <div>
+                <label for="current-weight" class="block text-sm font-bold text-gray-700 mb-1">CURRENT WEIGHT (LBS)</label>
+                <input type="number" id="current-weight" class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Enter your current weight">
+            </div>
+            
+            <div>
+                <label for="goal-weight" class="block text-sm font-bold text-gray-700 mb-1">GOAL WEIGHT (LBS)</label>
+                <input type="number" id="goal-weight" class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Enter your goal weight">
+            </div>
+            
+            <div>
+                <label for="height-feet" class="block text-sm font-bold text-gray-700 mb-1">HEIGHT</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <input type="number" id="height-feet" class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Feet">
+                    </div>
+                    <div>
+                        <input type="number" id="height-inches" class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Inches">
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <label for="age" class="block text-sm font-bold text-gray-700 mb-1">AGE</label>
+                <input type="number" id="age" class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Enter your age">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">GENDER</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="flex items-center justify-center px-4 py-3 border-2 border-blue-500 bg-blue-50 rounded-lg cursor-pointer">
+                        <input type="radio" name="gender" value="male" class="hidden" checked>
+                        <span class="ml-2 font-bold text-blue-800">MALE</span>
+                    </label>
+                    <label class="flex items-center justify-center px-4 py-3 border-2 border-gray-300 rounded-lg cursor-pointer">
+                        <input type="radio" name="gender" value="female" class="hidden">
+                        <span class="ml-2 font-medium text-gray-700">FEMALE</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div>
+                <label for="activity" class="block text-sm font-bold text-gray-700 mb-1">ACTIVITY LEVEL</label>
+                <select id="activity" class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none appearance-none bg-white">
+                    <option value="1.2">Sedentary (little or no exercise)</option>
+                    <option value="1.375">Lightly active (light exercise 1-3 days/week)</option>
+                    <option value="1.55" selected>Moderately active (moderate exercise 3-5 days/week)</option>
+                    <option value="1.725">Very active (hard exercise 6-7 days/week)</option>
+                    <option value="1.9">Extra active (very hard exercise & physical job)</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="goal" class="block text-sm font-bold text-gray-700 mb-1">GOAL</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <label class="flex items-center justify-center px-2 py-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-all">
+                        <input type="radio" name="goal-type" value="deficit" class="hidden">
+                        <span class="text-sm font-medium text-center">LOSE<br>WEIGHT</span>
+                    </label>
+                    <label class="flex items-center justify-center px-2 py-3 border-2 border-blue-500 bg-blue-50 rounded-lg cursor-pointer transition-all">
+                        <input type="radio" name="goal-type" value="maintain" class="hidden" checked>
+                        <span class="text-sm font-medium text-center text-blue-800">MAINTAIN<br>WEIGHT</span>
+                    </label>
+                    <label class="flex items-center justify-center px-2 py-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-all">
+                        <input type="radio" name="goal-type" value="surplus" class="hidden">
+                        <span class="text-sm font-medium text-center">GAIN<br>WEIGHT</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Fat Ratio Slider -->
+            <div>
+                <label for="fat-ratio" class="block text-sm font-bold text-gray-700 mb-1">FAT RATIO (g per lb of current weight)</label>
+                <div class="mt-1">
+                    <input type="range" id="fat-ratio-slider" class="slider w-full" min="0.2" max="0.3" step="0.01" value="0.25">
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-600">0.2g</span>
+                        <span id="fat-ratio-value" class="text-sm font-bold text-blue-800">0.25g</span>
+                        <span class="text-xs text-gray-600">0.3g</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="calculate-btn" class="btn-primary w-full text-white font-bold py-3 px-4 rounded-lg transition duration-300 mt-2 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                CALCULATE MY MACROS
+            </button>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 flex flex-col">
+            <h2 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                YOUR FUEL PLAN
+            </h2>
+            
+            <div id="results-container" class="hidden flex-grow flex flex-col">
+                <div class="mb-6 bg-blue-800 text-white p-4 rounded-lg">
+                    <h3 class="text-lg font-medium">DAILY TARGET</h3>
+                    <p id="calories-result" class="text-3xl font-bold">0 CALORIES</p>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4 mb-6">
+                    <div class="macro-card protein-card bg-white rounded-lg p-4 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-blue-800">PROTEIN</h4>
+                            <span id="protein-result" class="font-bold text-blue-800">0g</span>
+                        </div>
+                        <div class="mt-2 h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div id="protein-bar" class="h-3 bg-blue-600 rounded-full" style="width: 33%"></div>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">1g per lb of goal weight</p>
+                    </div>
+                    
+                    <div class="macro-card fat-card bg-white rounded-lg p-4 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-blue-800">FATS</h4>
+                            <span id="fat-result" class="font-bold text-blue-800">0g</span>
+                        </div>
+                        <div class="mt-2 h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div id="fat-bar" class="h-3 bg-blue-500 rounded-full" style="width: 33%"></div>
+                        </div>
+                        <p id="fat-description" class="text-xs text-gray-600 mt-1">0.25g per lb of current weight</p>
+                    </div>
+                    
+                    <div class="macro-card carb-card bg-white rounded-lg p-4 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-blue-800">CARBS</h4>
+                            <span id="carb-result" class="font-bold text-blue-800">0g</span>
+                        </div>
+                        <div class="mt-2 h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div id="carb-bar" class="h-3 bg-blue-400 rounded-full" style="width: 33%"></div>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">Remaining calories after protein and fats</p>
+                    </div>
+                </div>
+                
+                <div class="mt-auto">
+                    <div class="bg-white rounded-lg p-4 shadow-sm">
+                        <h4 class="font-bold text-blue-800 mb-2">MACRO BREAKDOWN</h4>
+                        <div class="flex h-6 rounded-full overflow-hidden">
+                            <div id="protein-ratio" class="bg-blue-600" style="width: 33%"></div>
+                            <div id="fat-ratio" class="bg-blue-500" style="width: 33%"></div>
+                            <div id="carb-ratio" class="bg-blue-400" style="width: 34%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-xs font-bold text-gray-600">
+                            <span>PROTEIN</span>
+                            <span>FAT</span>
+                            <span>CARBS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="empty-state" class="flex-grow flex flex-col items-center justify-center text-center p-4">
+                <div class="bg-blue-800 rounded-full p-4 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-blue-800 mb-2">READY TO POWER UP?</h3>
+                <p class="text-gray-600">Fill in your stats and hit "Calculate My Macros" to get your personalized fuel plan.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer with ebook reference -->
+    <div class="mt-8 pt-4 border-t border-gray-200 text-center">
+        <p class="text-gray-600">This calculator is part of the <span class="font-bold text-blue-800">Dad Fuel</span> ebook package.</p>
+    </div>
+</div>
+
+<script>
+    // Set up event listeners for the gender radio buttons
+    document.querySelectorAll('input[name="gender"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            document.querySelectorAll('input[name="gender"]').forEach(r => {
+                const label = r.parentElement;
+                if (r.checked) {
+                    label.classList.add('border-blue-500', 'bg-blue-50');
+                    label.querySelector('span').classList.add('text-blue-800', 'font-bold');
+                    label.querySelector('span').classList.remove('text-gray-700', 'font-medium');
+                } else {
+                    label.classList.remove('border-blue-500', 'bg-blue-50');
+                    label.classList.add('border-gray-300');
+                    label.querySelector('span').classList.remove('text-blue-800', 'font-bold');
+                    label.querySelector('span').classList.add('text-gray-700', 'font-medium');
+                }
+            });
+        });
+    });
+
+    // Set up event listeners for the goal radio buttons
+    document.querySelectorAll('input[name="goal-type"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            document.querySelectorAll('input[name="goal-type"]').forEach(r => {
+                const label = r.parentElement;
+                if (r.checked) {
+                    label.classList.add('border-blue-500', 'bg-blue-50');
+                    label.querySelector('span').classList.add('text-blue-800');
+                } else {
+                    label.classList.remove('border-blue-500', 'bg-blue-50');
+                    label.classList.add('border-gray-300');
+                    label.querySelector('span').classList.remove('text-blue-800');
+                }
+            });
+        });
+    });
+
+    // Set up fat ratio slider
+    const fatRatioSlider = document.getElementById('fat-ratio-slider');
+    const fatRatioValue = document.getElementById('fat-ratio-value');
+    
+    fatRatioSlider.addEventListener('input', function() {
+        const value = parseFloat(this.value).toFixed(2);
+        fatRatioValue.textContent = value + 'g';
+        document.getElementById('fat-description').textContent = value + 'g per lb of current weight';
+        
+        // If results are already showing, recalculate
+        if (!document.getElementById('results-container').classList.contains('hidden')) {
+            calculateMacros();
+        }
+    });
+
+    document.getElementById('calculate-btn').addEventListener('click', calculateMacros);
+    
+    function calculateMacros() {
+        // Get input values
+        const currentWeight = parseFloat(document.getElementById('current-weight').value);
+        const goalWeight = parseFloat(document.getElementById('goal-weight').value);
+        const heightFeet = parseFloat(document.getElementById('height-feet').value) || 0;
+        const heightInches = parseFloat(document.getElementById('height-inches').value) || 0;
+        const age = parseFloat(document.getElementById('age').value);
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const activityLevel = parseFloat(document.getElementById('activity').value);
+        const goal = document.querySelector('input[name="goal-type"]:checked').value;
+        const fatRatio = parseFloat(document.getElementById('fat-ratio-slider').value);
+        
+        // Validate inputs
+        if (!currentWeight || !goalWeight || !age || (heightFeet === 0 && heightInches === 0)) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        // Calculate BMR using Mifflin-St Jeor Equation
+        const heightCm = ((heightFeet * 12) + heightInches) * 2.54;
+        const weightKg = currentWeight * 0.453592;
+        
+        let bmr;
+        if (gender === 'male') {
+            bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
+        } else {
+            bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
+        }
+        
+        // Calculate TDEE (Total Daily Energy Expenditure)
+        let tdee = bmr * activityLevel;
+        
+        // Adjust calories based on goal
+        let calories;
+        if (goal === 'deficit') {
+            calories = tdee - 500; // 500 calorie deficit for weight loss
+        } else if (goal === 'surplus') {
+            calories = tdee + 500; // 500 calorie surplus for weight gain
+        } else {
+            calories = tdee; // Maintain weight
+        }
+        
+        // Calculate macros
+        const protein = goalWeight; // 1g per lb of goal weight
+        const fat = currentWeight * fatRatio; // Using the slider value
+        
+        const proteinCalories = protein * 4;
+        const fatCalories = fat * 9;
+        const remainingCalories = calories - proteinCalories - fatCalories;
+        const carbs = remainingCalories / 4;
+        
+        // Calculate percentages for visualization
+        const proteinPercentage = (proteinCalories / calories) * 100;
+        const fatPercentage = (fatCalories / calories) * 100;
+        const carbPercentage = (remainingCalories / calories) * 100;
+        
+        // Update the UI
+        document.getElementById('calories-result').textContent = Math.round(calories) + ' CALORIES';
+        document.getElementById('protein-result').textContent = Math.round(protein) + 'g';
+        document.getElementById('fat-result').textContent = Math.round(fat) + 'g';
+        document.getElementById('carb-result').textContent = Math.max(0, Math.round(carbs)) + 'g';
+        
+        // Update progress bars
+        document.getElementById('protein-bar').style.width = proteinPercentage + '%';
+        document.getElementById('fat-bar').style.width = fatPercentage + '%';
+        document.getElementById('carb-bar').style.width = carbPercentage + '%';
+        
+        // Update ratio visualization
+        document.getElementById('protein-ratio').style.width = proteinPercentage + '%';
+        document.getElementById('fat-ratio').style.width = fatPercentage + '%';
+        document.getElementById('carb-ratio').style.width = carbPercentage + '%';
+        
+        // Show results
+        document.getElementById('empty-state').classList.add('hidden');
+        document.getElementById('results-container').classList.remove('hidden');
+        document.getElementById('results-container').classList.add('flex');
+    }
+</script>
